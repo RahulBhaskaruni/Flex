@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:WindowedApplication xmlns:fx="http://ns.adobe.com/mxml/2009" 
+					   xmlns:s="library://ns.adobe.com/flex/spark" 
+					   xmlns:mx="library://ns.adobe.com/flex/mx" >
+	
+	<fx:Script>
+		<![CDATA[
+			import mx.collections.ArrayCollection;
+			import mx.collections.ArrayList;
+			
+			import spark.components.DataGrid;
+			import spark.components.gridClasses.GridColumn;
+			protected function Button_clickHandler(event:MouseEvent):void
+			{
+				// TODO Auto-generated method stub
+				if(V1.rowCount == 1)
+				{	
+				var DG:DataGrid = new DataGrid();
+				var arrayCollection:ArrayCollection = new ArrayCollection();
+				var object:Object = {Name:"Rahul", Allocation:"Products Group"};
+				var column1:GridColumn = new GridColumn();
+				column1.dataField = "Name";
+				var column2:GridColumn = new GridColumn();
+				column2.dataField = "Allocation";
+				var columns:ArrayList = new ArrayList();
+				columns.addItem(column1);
+				columns.addItem(column2);
+				DG.columns = columns;
+				arrayCollection.addItem(object);
+				DG.dataProvider = arrayCollection;
+				V1.addElement(DG);	
+				}
+				else 
+				V1.removeElementAt(1);
+			}
+		]]>
+	</fx:Script>
+	
+	
+	<fx:Declarations>
+		<!-- Place non-visual elements (e.g., services, value objects) here -->
+	</fx:Declarations>
+<s:VGroup id="V1">
+	<s:Button id="Button" label="Click to Populate" click="Button_clickHandler(event)"/>
+</s:VGroup>
+
+</s:WindowedApplication>
